@@ -1,16 +1,41 @@
 <template>
-  <div>
+  <div class="mob-filter">
     <select @change="onTypeChange($event)">
       <option selected value="">All</option>
+      <option value="video">Video</option>
       <option value="channel">Channel</option>
       <option value="playlist">Playlist</option>
     </select>
-    <select @change="onUploadDateChange($event)">
+    <select @change="onUploadDateChange($event.target.value)">
       <option selected value="">Any time</option>
       <option value="today">Today</option>
       <option value="week">This week</option>
       <option value="month">This month</option>
     </select>
+  </div>
+  <div class="desktop-filter">
+      <div class="filters">
+          <div>
+              <div>Type</div>
+              <div @click="typeFilter('video')" class="cursor-pionter">Video</div>
+              <div @click="typeFilter('channel')" class="cursor-pionter">Channel</div>
+              <div @click="typeFilter('playlist')" class="cursor-pionter">Playlist</div>
+          </div>
+          <div>
+              <div>Upload date</div>
+               <div @click="onUploadDateChange('today')" class="cursor-pionter">Today</div>
+              <div @click="onUploadDateChange('week')" class="cursor-pionter">This week</div>
+              <div @click="onUploadDateChange('month')" class="cursor-pionter">This Month</div>
+          </div>
+          <div>
+              <div>Sort by</div>
+              <div @click="sortby('relevance')" class="cursor-pionter" >Relevance</div>
+              <div @click="sortby('date')" class="cursor-pionter" >Upload Date</div>
+              <div @click="sortby('viewCount')" class="cursor-pionter">View Count</div>
+              <div @click="sortby('rating')" class="cursor-pionter">Rating</div>
+              
+          </div>
+      </div>
   </div>
   <div>
     <div v-for="result in results" v-bind:key="result.id">
@@ -40,6 +65,9 @@
       </template>
     </div>
   </div>
+  <div class="show-more" @click="loadMoreData">
+      Show more items 
+  </div>
 </template>
 
 <script lang="ts">
@@ -63,7 +91,14 @@ export default class YoutubeSearch extends Vue {
   pageToken: string = "";
   type: string = "";
   time: any = new Date(0).toISOString();
+  order:string = 'relevance';
+  filterPreview = {
+      type:null,
+      uploadDate:null,
+      sort: null
+  }
   readonly itemsPerPage = 5;
+  
   created() {
     if (this.$route.query.query) {
       this.keySearch = String(this.$route.query.query);
@@ -76,9 +111,9 @@ export default class YoutubeSearch extends Vue {
     this.getResults();
   }
 
-  onUploadDateChange(event: any) {
+  onUploadDateChange(val: string) {
       console.log('here')
-    switch (event.target.value) {
+    switch (val) {
       case "today":
         this.time = new Date().toISOString();
         break;
@@ -103,6 +138,7 @@ export default class YoutubeSearch extends Vue {
   getResults() {
     YoutubeService.search(
       `snippet`,
+      this.order,
       this.keySearchValue(),
       this.pageToken,
       this.type,
@@ -110,6 +146,7 @@ export default class YoutubeSearch extends Vue {
       this.itemsPerPage
     ).then((res) => {
       this.results = res["data"]["items"];
+      // this.pageToken = res["data"]["nextPageToken"]; 
     });
   }
 
@@ -132,5 +169,55 @@ export default class YoutubeSearch extends Vue {
 
     return new Date(date.getFullYear(), date.getMonth(), 2).toISOString();
   }
+
+  loadMoreData(){
+      
+  }
+
+  uploadDateFilter(val:string){
+      
+  }
+
+  typeFilter(val:string){
+      this.type = val;
+      this.getResults();
+  }
+
+  sortby(val:string){
+      this.order = val;
+      this.getResults();
+  }
 }
 </script>
+
+<style scoped lang="scss">
+   .show-more {
+
+	    text-align: center;
+        padding: 10px 0;
+        border-top: 1px solid red;
+   }
+    .mob-filter{
+            display: none;
+        }
+        .desktop-filter {
+            display: block;
+        }
+    @media (max-width: 767.98px) { 
+        .mob-filter{
+            display: block;
+        }
+         .desktop-filter {
+            display: none;
+        }
+    }
+    .filters {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .cursor-pionter {
+        cursor: pointer;
+        line-height: 2.2rem;
+    }
+</style>
