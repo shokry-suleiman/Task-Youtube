@@ -1,5 +1,6 @@
 <template>
-  <div class="mob-filter">
+ <div>
+    <div class="mob-filter">
     <select @change="onTypeChange($event)">
       <option selected value="">All</option>
       <option value="video">Video</option>
@@ -56,11 +57,11 @@
         />
       </template>
       <template v-if="result.id.channelId">
-        <AppPlayList
+        <AppChannel
           :title="result.snippet.title"
           :description="result.snippet.description"
           :thumbnails="result.snippet.thumbnails"
-          :videoId="result.id.videoId"
+          :channelId="result.id.channelId"
         />
       </template>
     </div>
@@ -68,6 +69,7 @@
   <div class="show-more" @click="loadMoreData">
       Show more items 
   </div>
+ </div>
 </template>
 
 <script lang="ts">
@@ -75,15 +77,29 @@ import { Options, Vue } from "vue-class-component";
 import YoutubeService from "../@resources/services/YoutubeService";
 import AppVideo from "../components/AppVideo.vue";
 import AppPlayList from "../components/AppPlayList.vue";
+import AppChannel from "../components/AppChannel.vue"
 
 @Options({
   components: {
     AppVideo,
     AppPlayList,
+    AppChannel
   },
   provide: {
     YoutubeService,
   },
+  watch:{
+      '$route': {
+            handler: function(to: any): void {
+              // Do something here.
+              console.log('sheks working now googd')
+              console.log(to)
+            },
+            immediate: true,
+          },
+          
+          
+  }
 })
 export default class YoutubeSearch extends Vue {
   keySearch!: string;
@@ -144,7 +160,7 @@ export default class YoutubeSearch extends Vue {
       this.type,
       this.time,
       this.itemsPerPage
-    ).then((res) => {
+    ).then((res:any) => {
       this.results = res["data"]["items"];
       // this.pageToken = res["data"]["nextPageToken"]; 
     });

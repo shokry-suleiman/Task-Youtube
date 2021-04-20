@@ -1,6 +1,6 @@
-
 import http from './BaseHttpService';
 import { API_KEY } from '../config/config'
+
 class YoutubeService {
 
 	search(part: string, order:string,
@@ -13,9 +13,15 @@ class YoutubeService {
 							&publishedAfter=${time}&key=${API_KEY}`)
 	}
 
-	listChannel(channelId:string){
-		return http.get(`channels?part=snippet%2CcontentDetails%2Cstatistics&id=UC_x5XG1OV2P6uZZ5FSM9Ttw&key=[YOUR_API_KEY]`)
+	listChannel(part:string,channelId:string){
+		return http.get(`channels?part=${part}&id=${channelId}&key=${API_KEY}`)
+	}
+
+	listPlaylistItems(part:string,playlistId:string,pageToken:string){
+		return http.get(`playlistItems?part=${part}&playlistId=${playlistId}
+						&pageToken=${pageToken}&key=${API_KEY}`)
 	}
 
 };
+export default new YoutubeService();
 
