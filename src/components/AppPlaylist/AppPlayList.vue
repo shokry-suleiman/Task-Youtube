@@ -1,6 +1,7 @@
 <template>
+<router-link :to="{  name: 'Video', params: { playlistId: playlistId } }">
   <div>
-    <picture>
+   <picture>
       <source  v-bind:srcset="thumbnails.high.url" media="(min-width: 1200px)" />
       <source  v-bind:srcset="thumbnails.medium.url" media="(min-width: 800px)" />
       <img
@@ -15,21 +16,15 @@
 		{{ title }}
 	</div>
   </div>
+  </router-link>
 </template>
-
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+import AppPlayList from './AppPlayList';
 
-@Options({
-  props: {
-    description: String,
-    title: String,
-    thumbnails: [],
-    videoId: String,
-  },
-})
-export default class AppVideo extends Vue {}
+    export default AppPlayList;
 </script>
 
-<style scoped lang="sass">
+<style lang="scss" >
+@import "src/assets/scss/_theme-colors.scss";
+  @import "./AppPlayList.scss";
 </style>

@@ -1,0 +1,29 @@
+.show-more {
+
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid red;
+}
+.mob-filter{
+        display: none;
+    }
+    .desktop-filter {
+        display: block;
+    }
+@media (max-width: 767.98px) { 
+    .mob-filter{
+        display: block;
+    }
+     .desktop-filter {
+        display: none;
+    }
+}
+.filters {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cursor-pionter {
+    cursor: pointer;
+    line-height: 2.2rem;
+}

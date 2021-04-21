@@ -1,0 +1,3 @@
+@mixin size($i){
+    font-size: (0.0625rem * (($i * 1) + 10)) !important;
+}

@@ -1,7 +1,6 @@
 <template>
- <router-link :to="{  name: 'Channel', params: { channelId: channelId } }">
-   <div>
-   <picture>
+  <div>
+    <picture>
       <source  v-bind:srcset="thumbnails.high.url" media="(min-width: 1200px)" />
       <source  v-bind:srcset="thumbnails.medium.url" media="(min-width: 800px)" />
       <img
@@ -16,25 +15,14 @@
 		{{ title }}
 	</div>
   </div>
- </router-link>
-
 </template>
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
+import AppVideo from './AppVideo';
 
-@Options({
- props: {
-    description: String,
-    title: String,
-    thumbnails: [],
-    channelId: String,
-  },
-})
-export default class AppChannel extends Vue {
-  
-}
+    export default AppVideo;
 </script>
 
-<style scoped lang="sass">
-
+<style lang="scss" >
+@import "src/assets/scss/_theme-colors.scss";
+  @import "./AppVideo.scss";
 </style>

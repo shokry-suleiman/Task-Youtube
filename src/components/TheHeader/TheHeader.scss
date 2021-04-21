@@ -1,0 +1,44 @@
+
+.nav {
+    background-color: $primary;
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
+    padding: 8px;
+    &__logo {
+        max-width: 40px;
+        margin-right: 8px;
+    }
+    &__search{
+        max-width: 20px;
+        margin-left: 8px;
+    }
+    &__input{
+        width: 80%;
+        border: 0 solid #ddd;
+        outline: 0;
+        box-shadow: none;
+        padding: 6px;
+        // position: absolute;
+        // left: 50%;
+        // top: 50%;
+        // width: 100%;
+        // opacity: 1;
+        // transform: translate(-50%,-1000vh);
+        // transition: opacity .3s ease-in-out;
+    }
+    &__key{
+        color: white;
+        width: 80%;
+        
+    }
+    &__input--active{
+        opacity: 1;
+        transform: translate(-50%,-50%);
+    }
+    
+}
+.active{
+    opacity: 1;
+    transform: translate(-50%,-50%);
+}
