@@ -16,9 +16,9 @@ import AppChannel from "../../components/AppChannel/AppChannel.vue"
   watch:{
       '$route': {
             handler: function(to: any): void {
-              // Do something here.
-              console.log('sheks working now googd')
-              console.log(to)
+              this.keySearch = String(this.$route.query.query);
+              this.pageToken ="";
+              this.search();
             },
             immediate: true,
           },
@@ -38,16 +38,13 @@ export default class YoutubeSearch extends Vue {
       sort: null
   }
   readonly itemsPerPage = 5;
+  loading:boolean = true;
+  loadMore:boolean =false;
   
-  created() {
-    if (this.$route.query.query) {
-      this.keySearch = String(this.$route.query.query);
-      this.search();
-    }
-  }
 
   search() {
       console.log('clicked')
+      this.loading = true;
     this.getResults();
   }
 
@@ -80,6 +77,7 @@ export default class YoutubeSearch extends Vue {
   }
 
   getResults() {
+
     YoutubeService.search(
       `snippet`,
       this.order,
@@ -89,8 +87,16 @@ export default class YoutubeSearch extends Vue {
       this.time,
       this.itemsPerPage
     ).then((res:any) => {
-      this.results = res["data"]["items"];
-      // this.pageToken = res["data"]["nextPageToken"]; 
+      
+      if (this.loadMore) {
+        this.results = [...this.results,...res["data"]["items"]];
+        this.loadMore = false;
+      }else {
+        this.results = res["data"]["items"];
+      this.loading=false;
+      }
+      
+      this.pageToken = res["data"]["nextPageToken"]; 
     });
   }
 
@@ -115,7 +121,8 @@ export default class YoutubeSearch extends Vue {
   }
 
   loadMoreData(){
-      
+    this.loadMore =true;
+      this.getResults();
   }
 
   uploadDateFilter(val:string){

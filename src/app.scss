@@ -2,3 +2,9 @@
 body{
     margin: 0px !important;
 }
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}

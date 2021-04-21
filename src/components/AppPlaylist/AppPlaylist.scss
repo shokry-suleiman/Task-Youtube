@@ -1,0 +1,23 @@
+a {
+    text-decoration: none;
+}
+.item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    &__image{
+        
+        margin-right: 8px;
+        max-width: 180px;
+
+    }
+    &__title{
+        color: $dark;
+        @include size(8);
+        font-family: 'Robotoo';
+    }
+    &__info{
+        align-self: flex-start;
+        margin-top: 10px;
+    }
+}

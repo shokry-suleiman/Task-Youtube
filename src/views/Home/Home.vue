@@ -1,7 +1,9 @@
 <template>
   <div>
     <TheHeader />
-    <router-view :key="$router.fullPath" />
+    
+     <router-view :key="$router.fullPath" />
+ 
   </div>
 </template>
 

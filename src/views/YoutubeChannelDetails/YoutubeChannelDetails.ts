@@ -26,7 +26,7 @@ export default class YoutubeChannelDetails extends Vue {
   mounted() {
     this.channelId = useRoute().params.channelId;
     this.part =
-      "snippet,contentDetails,brandingSettings,localizations,snippet,statistics";
+      "snippet,contentDetails,brandingSettings,localizations,statistics";
     this.listChannel();
   }
 
