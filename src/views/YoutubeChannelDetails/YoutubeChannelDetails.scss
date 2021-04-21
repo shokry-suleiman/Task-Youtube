@@ -1,0 +1,49 @@
+.channel {
+    &__banner {
+        object-fit: cover;
+    height: 80px;
+    width: 100%;
+    display:flex;
+    }
+    &__thumbnails{
+        background-color: $secondary;
+        position: relative;
+        margin-bottom: 20px;
+    }
+    &__image {
+            border-radius: 50%;
+            width: 60px;
+            position: absolute;
+            left: 20px;
+            top: -50px;
+    }
+    &__info{
+        padding-top: 18px;
+    padding-bottom: 22px;
+    padding-left: 55px;
+    }
+    &__subscription {
+        display: flex;
+        align-items: center;
+        color: $primary;
+        text-transform: uppercase;
+
+        &--value{
+            color:$gray1;
+            margin-left: 10px;
+        }
+    }
+    &__ytb {
+        margin-right: 4px;
+        max-width: 20px;
+    }
+    &__title{
+        @include size(6);
+        color: $dark;
+    }
+}
+.container {
+    margin-left: 10px;
+    margin-right: 10px;
+    
+}

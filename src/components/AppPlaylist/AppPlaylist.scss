@@ -5,19 +5,44 @@ a {
     display: flex;
     align-items: center;
     margin-bottom: 12px;
+   
     &__image{
-        
-        margin-right: 8px;
         max-width: 180px;
-
+        display: flex
+    }
+    &__thumbnails {
+        position: relative;
     }
     &__title{
         color: $dark;
         @include size(8);
         font-family: 'Robotoo';
+        margin-left: 8px;
     }
     &__info{
         align-self: flex-start;
         margin-top: 10px;
+    }
+    &__overlay{
+        position: absolute;
+        top:0;
+        right: 0;
+        background-color: rgba($dark, 0.7);
+        width: 50px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        flex-direction: column;
+    }
+    &__playlist {
+        max-width: 20px;
+    }
+    &__count{
+        @include size(4);
+        font-weight: 400;
+        color: white;
+        margin-bottom: 2px;
+
     }
 }

@@ -17,12 +17,17 @@
           alt="My amazing peace pie at the appropriate dimension!"
         />
       </picture>
+      <div class="item__overlay">
+        <div class="item__count">{{ itemCount}}</div>
+        <img class="item__playlist" src="../../assets/images/playlist.svg" alt="">
+      </div>
       </div>
       <div class="item__info">
         <div class="item__title">
           {{ title }}
       </div>
       </div>
+      
     </div>
   </router-link>
 </template>

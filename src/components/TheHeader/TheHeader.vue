@@ -2,7 +2,7 @@
   <header class="header">
     <nav class="nav">
       <img src="../../assets/images/youtube.svg" alt="" class="nav__logo" />
-      <div class="nav__key" v-if="!isActive">{{keySearch}} {{isActive}}</div>
+      <div class="nav__key" v-if="!isActive">{{keySearch}}</div>
       <input
         type="text"
         class="nav__input"

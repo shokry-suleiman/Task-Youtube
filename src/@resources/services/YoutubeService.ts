@@ -17,6 +17,15 @@ class YoutubeService {
 		return http.get(`channels?part=${part}&id=${channelId}&key=${API_KEY}`)
 	}
 
+	listChannelSections(part:string,channelId:string){
+		return http.get(`channelSections?part=${part}&channelId=${channelId}&key=${API_KEY}`)
+	}
+
+	listChannelPlaylists(part:string,channelId:string,pageToken: string,totalItemsPerPage:number) {
+		return http.get(`playlists?part=${part}&channelId=${channelId}
+						&maxResults=${totalItemsPerPage}&pageToken=${pageToken}&key=${API_KEY}`)
+	}
+	
 	listPlaylistItems(part:string,playlistId:string,pageToken:string){
 		return http.get(`playlistItems?part=${part}&playlistId=${playlistId}
 						&pageToken=${pageToken}&key=${API_KEY}`)

@@ -19,9 +19,10 @@ export default class YoutubeChannelDetails extends Vue {
   part!: string;
   channel!: any;
   playlistPageToken: string = "";
-  playlistItemType = "snippet";
+  playlistItemType = "snippet,contentDetails,localizations,player";
   loading: boolean = false;
   results: any = [];
+  itemsPerPage:number = 20;
   loadingResults: boolean = false;
   mounted() {
     this.channelId = useRoute().params.channelId;
@@ -35,20 +36,28 @@ export default class YoutubeChannelDetails extends Vue {
       console.log("res", res);
       this.channel = res["data"]["items"][0];
       this.loading = true;
-      this.listPlaylistItems();
+      this.listChannelPlaylists();
+      this.listChannelSections();
       console.log("this.channel", this.channel);
     });
   }
 
-  listPlaylistItems() {
-    YoutubeService.listPlaylistItems(
+  listChannelPlaylists() {
+    YoutubeService.listChannelPlaylists(
       this.playlistItemType,
-      this.channel.contentDetails.relatedPlaylists.uploads,
-      this.playlistPageToken
+      this.channelId,
+      this.playlistPageToken,
+      this.itemsPerPage
     ).then((res: any) => {
       this.results = res["data"]["items"];
       this.loadingResults = true;
       console.log("resssss", res);
     });
+  }
+
+  listChannelSections(){
+    YoutubeService.listChannelSections(`snippet,contentDetails`,this.channelId).then( (res:any) =>{
+      console.log('rewerweqrwrs',res)
+    })
   }
 }

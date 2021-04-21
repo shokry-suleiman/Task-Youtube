@@ -6,6 +6,7 @@ import { Options, Vue } from "vue-class-component";
     title: String,
     thumbnails: [],
     playlistId: String,
+    itemCount: String
   },
 })
 export default class AppPlayList extends Vue {}
