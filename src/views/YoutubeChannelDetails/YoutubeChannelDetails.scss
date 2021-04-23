@@ -42,7 +42,18 @@
         color: $dark;
     }
 }
-.container {
-    margin-left: 10px;
-    margin-right: 10px;
+.inner-container {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+@media (min-width: 992px) {
+    .channel {
+        &__banner {
+        height: 110px;
+        }
+        &__resutls{
+            background-color: white;
+            padding-top: 10px;
+        }
+    }
 }

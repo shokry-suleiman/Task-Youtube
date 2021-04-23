@@ -11,3 +11,18 @@ select {
 *{
     font-family: 'Roboto', sans-serif;
 }
+.grid-container{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+@media (min-width: 992px) { 
+    .grid-container {
+        width: 100%;
+        max-width: 1000px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    body{
+        background: #f9f9f9 !important;
+    }
+}

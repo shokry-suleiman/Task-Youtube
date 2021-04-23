@@ -1,44 +1,38 @@
+
 .mobfilter {
+    display: flex;
     padding: 12px 12px;
-    border-bottom: 1px solid $gray1;
-    &__content{
+    &__content {
         position: relative;
         display: inline-block;
         box-sizing: border-box;
         margin-right: 4px;
         padding: 0 10px;
-        border: 1px solid rgba(0,0,0,0.102);
+        border: 1px solid rgba(0, 0, 0, 0.102);
         border-radius: 2px;
         color: #0f0f0f;
         background: #f1f1f1;
         max-width: 100%;
     }
-    &__select{
-     
-            padding: 8px 20px 8px 0;
-            margin: 0;
-            border: none;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            color: inherit;
-            background: none;
-            @include size(6);
-            font-family: 'Roboto';
-            width: 100%;
+    &__select {
+        padding: 8px 20px 8px 0;
+        margin: 0;
+        border: none;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: inherit;
+        background: none;
+        @include size(6);
+        font-family: "Roboto";
+        width: 100%;
     }
     &__arrow {
         max-width: 12px;
         position: absolute;
-        right:12px;
+        right: 12px;
         top: 12px;
     }
-}
-
-.container {
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 20px;
 }
 .spinner {
     display: flex;
@@ -55,44 +49,100 @@
 }
 .loadmore {
     text-align: center;
-    
+    display: block;
     border-top: 1px solid $gray1;
     cursor: pointer;
     &__text {
-       
-    margin: 10px 0;
-    color: $gray1;
-    @include size(4);
-   
+        margin: 10px 0;
+        color: $gray1;
+        @include size(4);
     }
 
     &__spinner {
         padding: 2px 0;
         max-width: 80px;
     }
-
 }
-.mob-filter{
+.deskfilter {
+    display: none;
+}
+@media (min-width: 992px) {
+    .mobfilter {
         display: none;
     }
-    .desktop-filter {
+    .deskfilter {
         display: block;
     }
-@media (max-width: 767.98px) { 
-    .mob-filter{
-        display: block;
-    }
-     .desktop-filter {
+    .loadmore {
         display: none;
     }
-}
-.filters {
-    display: flex;
-    justify-content: space-between;
+    .spinner {
+        display: none;
+    }
+    .deskfilter{
+        &__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 40px;
+            padding-bottom: 10px;
+        }
+        &__result{
+            color: $gray1;
+            @include size(6);
+        }
+        &__filter{
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            &--img{
+                max-width: 18px;
+                width: 100%;
+                margin-right: 6px;
+                
+            }
+            &--text{
+                color: $gray1;
+                @include size(4);
+                font-weight: 500;
+                align-self: flex-start;
+            }
+        }
+        &__content{
+            display: flex;
+            margin-top: 14px;
+            padding-bottom: 60px;
+        }
+        &__title{
+            color: $dark;
+            @include size(4);
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        &__values{
+            max-width: 190px;
+            width: 100%;
+            margin-right: 50px;
+
+        }
+        &__value{
+            display: flex;
+            align-items: center;
+            margin-bottom: 14px;
+            cursor: pointer;
+            color: $gray1;
+            &--active {
+                max-width: 10px;
+                margin-left: 14px;
+            }
+        }
+        &__sperator{
+            border-color: #f9f9f93d;
+        }
+       
+    }
+
+    
 }
 
-.cursor-pionter {
-    cursor: pointer;
-    line-height: 2.2rem;
-}
 

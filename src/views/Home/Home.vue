@@ -1,10 +1,10 @@
 <template>
   <div>
     <TheHeader />
-    
-     <router-view :key="$router.fullPath" />
- 
-  </div>
+    <div class="route">
+      <router-view :key="$router.fullPath" />
+    </div>
+  </div> 
 </template>
 
 

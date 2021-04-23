@@ -1,5 +1,8 @@
 
-.nav {
+.navdesk {
+display: none;
+}
+.navmob {
     background-color: $primary;
     display: flex;
     align-items: center;
@@ -28,10 +31,6 @@
         @include size(6);
         
     }
-    &__input--active{
-        opacity: 1;
-        transform: translate(-50%,-50%);
-    }
     &__content{
         width: calc(100% - 70px);
         display: flex;
@@ -46,7 +45,52 @@
     }
     
 }
-.active{
-    opacity: 1;
-    transform: translate(-50%,-50%);
-}
+
+@media (min-width: 992px) { 
+    header  {
+        background-color: $white;
+        box-shadow: -3px -2px 6px 1px rgb(0 0 0 / 12%);
+        position: fixed;
+        width: 100%;
+        z-index: 100;
+    }
+    .navmob{
+        display: none;
+    }
+    .navdesk {
+        display: flex;
+        align-items: center;
+       
+        &__logo{
+            max-width: 100px;
+            margin-left: -10px;
+        }
+        &__input {
+            width: 100%;
+            max-width: 600px;
+            border: 1px solid #ddd;
+            outline: 0;
+            box-shadow: none;
+            padding: 6px;
+        }
+        &__button {
+            background: #f1f1f1;
+            border: 1px solid #ddd;
+            width: 80px;
+            align-self: stretch;
+            cursor: pointer;
+        }
+        &__search{
+            max-width: 14px;
+        }
+        &__content{
+            margin-left: 60px;
+            display: flex;
+            align-items: center;
+            max-width: 600px;
+            width: 100%;
+        }
+    }
+    
+ }
+

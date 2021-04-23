@@ -1,6 +1,7 @@
 <template>
-  <div v-if="loading" class="channel">
-    <img
+  <div v-if="loading" class="channel grid-container">
+    <div class="inner-container">
+      <img
       v-bind:src="channel.brandingSettings.image.bannerExternalUrl"
       alt=""
       class="channel__banner"
@@ -38,7 +39,9 @@
         </div>
       </div>
     </div>
-    <div :v-if="loadingResults" class="container">
+    </div>
+    <div class="channel__resutls">
+      <div :v-if="loadingResults">
       <div v-for="result in results" v-bind:key="result.id">
         <AppPlayList
           :title="result.snippet.title"
@@ -50,6 +53,7 @@
         />
 
       </div>
+    </div>
     </div>
   </div>
 </template>

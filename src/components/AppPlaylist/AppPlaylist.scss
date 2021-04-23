@@ -53,3 +53,11 @@ a {
     }
   
 }
+
+@media (min-width: 992px) {
+    .item {
+        &__overlay{
+            width: 80px;
+        }
+    }
+}

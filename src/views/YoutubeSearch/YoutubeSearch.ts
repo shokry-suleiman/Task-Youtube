@@ -18,12 +18,19 @@ import AppChannel from "../../components/AppChannel/AppChannel.vue"
             handler: function(to: any): void {
               this.keySearch = String(this.$route.query.query);
               this.pageToken ="";
+              this.filterPreview = {
+                status: false,
+                type:null,
+                uploadDate:null,
+                sort: null
+            }
               this.search();
             },
             immediate: true,
           },
           
-  }
+  },
+  
 })
 export default class YoutubeSearch extends Vue {
   keySearch!: string;
@@ -33,27 +40,34 @@ export default class YoutubeSearch extends Vue {
   time: any = new Date(0).toISOString();
   order:string = 'relevance';
   filterPreview = {
-      type:null,
-      uploadDate:null,
-      sort: null
+      status: false,
+      type:'',
+      uploadDate:'',
+      sort: ''
   }
   readonly itemsPerPage = 5;
   loading:boolean = true;
   loadMore:boolean =false;
-  
-
+  totalResult:any;
   search() {
       console.log('clicked')
       this.loading = true;
     this.getResults();
   }
-
+  
   updated(){
     console.log('refoooo')
   }
 
   onUploadDateChange(val: string) {
-      console.log('here')
+    if(this.filterPreview.uploadDate ==val) {
+      this.filterPreview.uploadDate = '';
+      this.time = new Date().toISOString();
+      this.getResults();
+      return;
+    }
+      this.filterPreview.uploadDate = val;
+      this.filterPreview.status = false;
     switch (val) {
       case "today":
         this.time = new Date().toISOString();
@@ -94,8 +108,9 @@ export default class YoutubeSearch extends Vue {
       }else {
         this.results = res["data"]["items"];
       this.loading=false;
+      this.totalResult = res["data"]["pageInfo"]["totalResults"]
       }
-      
+      this.totalResult = res["pageInfo"]["totalResults"]  
       this.pageToken = res["data"]["nextPageToken"]; 
     });
   }
@@ -130,12 +145,28 @@ export default class YoutubeSearch extends Vue {
   }
 
   typeFilter(val:string){
+      if(this.filterPreview.type ==val) {
+        this.filterPreview.type = '';
+        this.type= '';
+        this.getResults();
+        return;
+      }
       this.type = val;
+      this.filterPreview.type = val;
+      this.filterPreview.status = false;
       this.getResults();
   }
 
   sortby(val:string){
+    if(this.filterPreview.sort ==val) {
+      this.order = '';
+      this.filterPreview.sort = '';
+      this.getResults();
+      return;
+    }
       this.order = val;
+      this.filterPreview.sort = val;
+      this.filterPreview.status = false;
       this.getResults();
   }
 }
