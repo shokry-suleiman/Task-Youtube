@@ -8,7 +8,22 @@ import AppVideo from "../../components/AppVideo/AppVideo.vue";
     },
     provide: {
         YoutubeService
-    }
+    },
+  watch:{
+      '$route': {
+            handler: function(to: any): void {
+                this.playlistId = useRoute().params.playlistId;
+                this.part = `contentDetails,id,snippet,status`;
+                this.videoPart = `contentDetails,id,recordingDetails,player,liveStreamingDetails,localizations,snippet,statistics,status,topicDetails`;
+                this.listPlaylistItems();
+                this.loading = true;
+                this.videoLoading = true;
+                this.pageToken = ''
+            },
+            immediate: true,
+          },
+          
+  }
 })
 export default class YoutubePlaylistDetails extends Vue {
 
@@ -24,10 +39,7 @@ export default class YoutubePlaylistDetails extends Vue {
         this.playlistId = useRoute().params.playlistId;
         this.part = `contentDetails,id,snippet,status`;
         this.videoPart = `contentDetails,id,recordingDetails,player,liveStreamingDetails,localizations,snippet,statistics,status,topicDetails`;
-
         this.listPlaylistItems();
-
-
     }
 
     listPlaylistItems() {

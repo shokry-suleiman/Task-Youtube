@@ -20,4 +20,16 @@ a {
         align-self: flex-start;
         margin-top: 10px;
     }
+    &__subscribers{
+        margin-top: 4px;
+        color: $gray1;
+        @include size(4);
+        font-family: 'Robotoo';
+    }
+    &__videos{
+        margin-top: 4px;
+        color: $gray1;
+        @include size(3);
+        font-family: 'Robotoo';
+    }
 }

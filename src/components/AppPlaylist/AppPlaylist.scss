@@ -39,10 +39,17 @@ a {
         max-width: 20px;
     }
     &__count{
-        @include size(4);
-        font-weight: 400;
+        @include size(5);
         color: white;
         margin-bottom: 2px;
 
     }
+    &__channel{
+        margin-top: 4px;
+        color: $gray1;
+        @include size(3);
+        font-family: 'Robotoo';
+        margin-left: 8px;
+    }
+  
 }

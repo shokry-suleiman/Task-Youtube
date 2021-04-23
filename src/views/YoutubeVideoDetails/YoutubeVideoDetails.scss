@@ -21,6 +21,11 @@
         height: 100%;
     }
     &__info{
+        border-top: 1px solid $gray1;
+        border-bottom: 1px solid $gray1;
+        padding: 12px 15px 30px 15px;
+        margin-bottom: 20px;
+        
         &--flex{
             display: flex;
             align-items: center;
@@ -28,27 +33,47 @@
         &--between{
             justify-content: space-between;
         }
+        &--max{
+            max-width: 60px;
+            width: 100%;
+        }
+        &--box{
+            width: 50%
+        }
+        &--end {
+            justify-content: flex-end;
+        }
     }
     &__title {
-        @include size(4);
+        @include size(6);
         color: $dark;
+        font-family: 'Roboto';
+        margin-bottom: 4px;
     }
     &__down{
-        max-width: 14px;
+        max-width: 10px;
+        margin-left: 6px;
+        margin-right: 4px;
+        align-self: flex-start
     }
     &__channel{
         @include size(4);
         color: $dark; 
+        font-family: 'Roboto';
+        margin-bottom: 12px;
     }
     &__views{
-        @include size(4);
+        @include size(2);
         color: $gray1; 
         margin-left: 6px;
+        font-family: 'Roboto';
+        margin-bottom: 12px;
     }
     &__like {
         @include size(4);
         color: $gray1; 
         margin-left: 6px;
+        display: inline-block;
         &--img{
             max-width: 14px;
         }
@@ -57,9 +82,21 @@
         @include size(4);
         color: $gray1; 
         margin-left: 6px;
+        display: inline-block;
         &--img{
             max-width: 14px;
         }
 
+    }
+    &__plus{
+        max-width: 14px;
+        margin-right: 14px;
+    }
+    &__share{
+        max-width: 14px;
+        margin-right: 14px;
+    }
+    &__flags{
+        max-width: 14px;
     }
 }

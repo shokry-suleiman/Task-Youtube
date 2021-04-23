@@ -8,6 +8,22 @@ import AppVideo from "../../components/AppVideo/AppVideo.vue";
   },
   provide:{
     YoutubeService
+  },
+  
+  watch:{
+      '$route': {
+            handler: function(to: any,from:any): void {
+              console.log('from',from)
+              console.log('to',to)
+              this.videoId = to.params.videoId;
+              this.videoPart = `contentDetails,id,recordingDetails,player,liveStreamingDetails,localizations,snippet,statistics,status,topicDetails`;
+              this.relatedVideosPart =`snippet`
+              this.listVideo();
+              this.listRelatedVideos();
+            },
+            immediate: true,
+          },
+          
   }
 })
 export default class YoutubeVideolDetails extends Vue {
@@ -20,14 +36,7 @@ export default class YoutubeVideolDetails extends Vue {
    videoLoading:boolean = true;
    videoDetails!:any;
    embededVideo!:any;
-   mounted() {
-    this.videoId = useRoute().params.videoId;
-    this.videoPart = `contentDetails,id,recordingDetails,player,liveStreamingDetails,localizations,snippet,statistics,status,topicDetails`;
-    this.relatedVideosPart =`snippet`
-    this.listVideo();
-    this.listRelatedVideos();
-
-  }
+  
 
   listVideo(){
     YoutubeService.listVideoDetails(this.videoPart,this.videoId,'',1).then( (res:any) =>{

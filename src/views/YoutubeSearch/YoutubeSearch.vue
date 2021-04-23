@@ -79,6 +79,7 @@
               :description="result.snippet.description"
               :thumbnails="result.snippet.thumbnails"
               :videoId="result.id.videoId"
+              :channelTitle="result.snippet.channelTitle"
             />
           </template>
           <template v-if="result.id.playlistId">
@@ -87,6 +88,7 @@
               :description="result.snippet.description"
               :thumbnails="result.snippet.thumbnails"
               :playlistId="result.id.playlistId"
+              :channelTitle="result.snippet.channelTitle"
             />
           </template>
           <template v-if="result.id.channelId">
@@ -129,7 +131,7 @@ import YoutubeSearch from "./YoutubeSearch";
 export default YoutubeSearch;
 </script>
 
-<style lang="scss" >
+<style lang="scss" scoped >
 @import "src/assets/scss/main.scss";
 @import "./YoutubeSearch.scss";
 </style>

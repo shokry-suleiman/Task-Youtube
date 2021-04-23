@@ -6,6 +6,7 @@ import { Options, Vue } from "vue-class-component";
     title: String,
     thumbnails: [],
     videoId: String,
+    channelTitle: String
   },
 })
 export default class AppVideo extends Vue {}

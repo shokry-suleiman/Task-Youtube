@@ -26,6 +26,9 @@
         <div class="item__title">
           {{ title }}
       </div>
+      <div class="item__channel">
+        {{ channelTitle }}
+      </div>
       </div>
       
     </div>
@@ -37,7 +40,7 @@ import AppPlayList from './AppPlayList';
     export default AppPlayList;
 </script>
 
-<style lang="scss" >
+<style lang="scss" scoped>
 @import "src/assets/scss/main.scss";
   @import "./AppPlayList.scss";
 </style>

@@ -45,7 +45,8 @@
           :description="result.snippet.description"
           :thumbnails="result.snippet.thumbnails"
           :playlistId="result.id"
-		  :itemCount="result.contentDetails.itemCount"
+		      :itemCount="result.contentDetails.itemCount"
+          :channelTitle="result.snippet.channelTitle"
         />
 
       </div>

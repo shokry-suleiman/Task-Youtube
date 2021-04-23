@@ -13,11 +13,18 @@ a {
     }
     &__title{
         color: $dark;
-        @include size(8);
+        @include size(5);
         font-family: 'Robotoo';
     }
     &__info{
         align-self: flex-start;
-        margin-top: 10px;
+        // margin-top: 10px;
+    }
+    &__views,
+    &__channel{
+        margin-top: 4px;
+        color: $gray1;
+        @include size(3);
+        font-family: 'Robotoo';
     }
 }

@@ -23,6 +23,12 @@
         <div class="item__title">
           {{ title }}
       </div>
+      <div class="item__channel">
+        {{ channelTitle }}
+      </div>
+      <div class="item__views">
+          views
+      </div>
       </div>
     </div>
 
