@@ -13,8 +13,13 @@ import AppVideo from "../../components/AppVideo/AppVideo.vue";
   watch:{
       '$route': {
             handler: function(to: any,from:any): void {
-              console.log('from',from)
-              console.log('to',to)
+              window.scrollTo({
+                top:0,
+                left:0,
+                behavior:'smooth'
+              });
+              this.loading =true;
+              this.videoLoading = true;
               this.videoId = to.params.videoId;
               this.videoPart = `contentDetails,id,recordingDetails,player,liveStreamingDetails,localizations,snippet,statistics,status,topicDetails`;
               this.relatedVideosPart =`snippet`

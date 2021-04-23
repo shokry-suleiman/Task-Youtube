@@ -11,14 +11,17 @@ import AppVideo from "../../components/AppVideo/AppVideo.vue";
     },
   watch:{
       '$route': {
-            handler: function(to: any): void {
-                this.playlistId = useRoute().params.playlistId;
-                this.part = `contentDetails,id,snippet,status`;
-                this.videoPart = `contentDetails,id,recordingDetails,player,liveStreamingDetails,localizations,snippet,statistics,status,topicDetails`;
-                this.listPlaylistItems();
-                this.loading = true;
-                this.videoLoading = true;
-                this.pageToken = ''
+            handler: function(to: any): void { window.scrollTo({
+                top:0,
+                left:0,
+                behavior:'smooth'
+              });
+              this.loading =true;
+              this.videoLoading = true;
+              this.playlistId = to.params.playlistId;
+              this.part = `contentDetails,id,snippet,status`;
+              this.videoPart = `contentDetails,id,recordingDetails,player,liveStreamingDetails,localizations,snippet,statistics,status,topicDetails`;
+              this.listPlaylistItems();
             },
             immediate: true,
           },
@@ -35,12 +38,6 @@ export default class YoutubePlaylistDetails extends Vue {
     videoDetails!: any;
     loading:boolean =true;
     videoLoading:boolean = true;
-    mounted() {
-        this.playlistId = useRoute().params.playlistId;
-        this.part = `contentDetails,id,snippet,status`;
-        this.videoPart = `contentDetails,id,recordingDetails,player,liveStreamingDetails,localizations,snippet,statistics,status,topicDetails`;
-        this.listPlaylistItems();
-    }
 
     listPlaylistItems() {
         YoutubeService.listPlaylistItems(this.part, this.playlistId, this.pageToken, 10).then((res: any) => {

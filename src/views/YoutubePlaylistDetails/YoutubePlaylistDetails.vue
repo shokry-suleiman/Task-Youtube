@@ -60,7 +60,6 @@
 
     <div :v-if="!loading" class="container">
       <div v-for="video in playListVideos" v-bind:key="video.id">
-        {{video }}
         <AppVideo
           :title="video?.snippet.title"
           :description="video.snippet.description"
@@ -68,7 +67,6 @@
           :videoId="video.snippet.resourceId.videoId"
           :channelTitle="video.snippet.channelTitle"
         />
-        <!-- {{video}} -->
       </div>
     </div>
   </div>

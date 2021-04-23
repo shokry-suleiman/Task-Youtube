@@ -59,14 +59,15 @@
     </div>
 
     <div :v-if="!loading" class="container">
-      <div v-for="video in relatedVideos" v-bind:key="video.id">
+      <div v-for="(video,index) in relatedVideos" v-bind:key="index">
         <AppVideo
-          :title="video.snippet.title"
-          :description="video.snippet.description"
-          :thumbnails="video.snippet.thumbnails"
-          :videoId="video.id.videoId"
-          :channelTitle="video.snippet.channelTitle"
+          :title="video?.snippet?.title"
+          :description="video?.snippet?.description"
+          :thumbnails="video?.snippet?.thumbnails"
+          :videoId="video?.id?.videoId"
+          :channelTitle="video?.snippet?.channelTitle"
         />
+		{{  }}
         <!-- {{video}} -->
       </div>
     </div>

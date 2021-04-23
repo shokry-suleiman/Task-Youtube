@@ -22,6 +22,12 @@
         <div class="item__title">
           {{ title }}
       </div>
+      <div class="item__videos">
+        videos
+      </div>
+      <div class="item__subscribers">
+          subscribers
+      </div>
       </div>
     </div>
   </router-link>
