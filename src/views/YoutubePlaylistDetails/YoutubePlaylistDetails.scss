@@ -1,0 +1,41 @@
+// .frame {
+//     &__container {
+//         position: relative;
+//         padding-bottom: 56.25%;
+//         padding-top: 30px;
+//         height: 0;
+//         overflow: hidden;
+//     }
+//     &__container iframe,
+//     &__container  object,
+//     &__container  video,
+//     &__container  embed {
+//         position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     }
+// }
+// .container {
+//     max-width: 600px;
+//     margin: auto;
+//   }
+  .Flexible-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      padding-top: 30px;
+      height: 0;
+      overflow: hidden;
+  }
+
+  .Flexible-container iframe,   
+  .Flexible-container object,
+  .Flexible-container video, /* for html5 video embeds */
+  .Flexible-container embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+  }

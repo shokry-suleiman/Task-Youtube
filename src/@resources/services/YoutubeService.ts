@@ -25,10 +25,27 @@ class YoutubeService {
 		return http.get(`playlists?part=${part}&channelId=${channelId}
 						&maxResults=${totalItemsPerPage}&pageToken=${pageToken}&key=${API_KEY}`)
 	}
+
+	listChannelVideos(){
+		
+	}
 	
-	listPlaylistItems(part:string,playlistId:string,pageToken:string){
+	listPlaylistItems(part:string,playlistId:string,pageToken:string,totalItemsPerPage:number){
 		return http.get(`playlistItems?part=${part}&playlistId=${playlistId}
-						&pageToken=${pageToken}&key=${API_KEY}`)
+						&pageToken=${pageToken}&maxResults=${totalItemsPerPage}&key=${API_KEY}`)
+	}
+
+	listVideoDetails(part:string,videoId:string,pageToken:string,totalItemsPerPage:number){
+		return http.get(`videos?part=${part}&id=${videoId}
+						&pageToken=${pageToken}&maxResults=${totalItemsPerPage}
+						&key=${API_KEY}`)
+	}
+
+
+	listRelatedVideos(part:string,videoId:string,type:string,pageToken:string,totalItemsPerPage:number){
+		return http.get(`search?part=${part}&relatedToVideoId=${videoId}
+						&type=${type}&pageToken=${pageToken}&maxResults=${totalItemsPerPage}
+						&key=${API_KEY}`)
 	}
 
 };

@@ -1,0 +1,65 @@
+.container{
+    margin-left: 15px;
+    margin-right:15px
+}
+.frame {
+    &__wrapper {
+        position: relative;
+        padding-bottom: 56.25%;
+        padding-top: 30px;
+        height: 0;
+        overflow: hidden;
+    }
+    &__wrapper iframe,
+    &__wrapper  object,
+    &__wrapper  video,
+    &__wrapper  embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    &__info{
+        &--flex{
+            display: flex;
+            align-items: center;
+        }
+        &--between{
+            justify-content: space-between;
+        }
+    }
+    &__title {
+        @include size(4);
+        color: $dark;
+    }
+    &__down{
+        max-width: 14px;
+    }
+    &__channel{
+        @include size(4);
+        color: $dark; 
+    }
+    &__views{
+        @include size(4);
+        color: $gray1; 
+        margin-left: 6px;
+    }
+    &__like {
+        @include size(4);
+        color: $gray1; 
+        margin-left: 6px;
+        &--img{
+            max-width: 14px;
+        }
+    }
+    &__dislike {
+        @include size(4);
+        color: $gray1; 
+        margin-left: 6px;
+        &--img{
+            max-width: 14px;
+        }
+
+    }
+}

@@ -1,5 +1,5 @@
 <template>
- <router-link :to="{ name: 'Channel', params: { channelId: channelId } }">
+ <router-link :to="{ name: 'Playlist', params: { playlistId: playlistId } }">
     <div class="item">
       <div class="item__thumbnails">
         <picture>

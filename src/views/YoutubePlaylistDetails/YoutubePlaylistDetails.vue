@@ -1,5 +1,6 @@
 <template>
-  <div class="frame" :v-if="videoLoading">
+  <div>
+    <div class="frame" :v-if="videoLoading">
     <div :v-if="videoLoading">
       <div class="frame__wrapper">
         <div v-html="videoDetails?.player.embedHtml"></div>
@@ -39,15 +40,28 @@
       </div>
     </div>
   </div>
+
+    <div :v-if="!loading" class="container">
+      <div v-for="video in playListVideos" v-bind:key="video.id">
+        <AppVideo
+          :title="video.snippet.title"
+          :description="video.snippet.description"
+          :thumbnails="video.snippet.thumbnails"
+          :videoId="video.id.videoId"
+        />
+      </div>
+    </div>
+  </div>
 </template>
 
-<script lang="ts">
-import YoutubeVideoDetails from "./YoutubeVideoDetails";
 
-export default YoutubeVideoDetails;
+<script lang="ts">
+import YoutubePlaylistDetails from "./YoutubePlaylistDetails";
+
+export default YoutubePlaylistDetails;
 </script>
 
-<style lang="scss"  >
+<style lang="scss" >
 @import "src/assets/scss/main.scss";
-@import "./YoutubeVideoDetails.scss";
+@import "./YoutubePlaylistDetails.scss";
 </style>

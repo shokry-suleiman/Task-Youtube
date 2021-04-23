@@ -27,7 +27,7 @@ export default class YoutubeChannelDetails extends Vue {
   mounted() {
     this.channelId = useRoute().params.channelId;
     this.part =
-      "snippet,contentDetails,brandingSettings,localizations,statistics";
+      "snippet,contentDetails,brandingSettings,localizations,statistics,id,status,topicDetails";
     this.listChannel();
   }
 
@@ -56,7 +56,7 @@ export default class YoutubeChannelDetails extends Vue {
   }
 
   listChannelSections(){
-    YoutubeService.listChannelSections(`snippet,contentDetails`,this.channelId).then( (res:any) =>{
+    YoutubeService.listChannelSections(`snippet,contentDetails,localizations,targeting`,this.channelId).then( (res:any) =>{
       console.log('rewerweqrwrs',res)
     })
   }

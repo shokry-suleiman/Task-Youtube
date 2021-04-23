@@ -1,4 +1,6 @@
 <template>
+<router-link :to="{ name: 'Video', params: { videoId: videoId } }">
+
   <div class="item">
       <div class="item__thumbnails">
         <picture>
@@ -23,6 +25,9 @@
       </div>
       </div>
     </div>
+
+</router-link>
+
 </template>
 <script lang="ts">
 import AppVideo from './AppVideo';

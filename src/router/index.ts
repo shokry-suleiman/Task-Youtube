@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home/Home.vue'
 import YoutubeSearch from '../views/YoutubeSearch/YoutubeSearch.vue';
-import YoutubeVideoDetails from '../views/YoutubeVideoDetails/YoutubeVideoDetails';
+import YoutubeVideoDetails from '../views/YoutubeVideoDetails/YoutubeVideoDetails.vue';
 import YoutubeChannelDetails from '../views/YoutubeChannelDetails/YoutubeChannelDetails.vue';
+import YoutubeVideo from '../views/YoutubeVideo/YoutubeVideo.vue';
+import YoutubePlaylistDetails from '../views/YoutubePlaylistDetails/YoutubePlaylistDetails.vue';
 
 
 const routes: Array<RouteRecordRaw> = [
@@ -21,9 +23,21 @@ const routes: Array<RouteRecordRaw> = [
 				component: YoutubeSearch
 			},
 			{
-				path: 'video/:playlistId',
-				name: 'Video',
-				component: YoutubeVideoDetails
+				path: 'video',
+				name: 'Details',
+				component:YoutubeVideo ,
+				children: [
+					{
+						path: 'video/:videoId',
+						name: 'Video',
+						component: YoutubeVideoDetails
+					},
+					{
+						path: 'playlist/:playlistId',
+						name: 'Playlist',
+						component: YoutubePlaylistDetails
+					},
+				]
 			},
 			{
 				path: 'channel/:channelId',
